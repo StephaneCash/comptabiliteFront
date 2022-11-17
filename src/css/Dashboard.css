@@ -9,7 +9,7 @@
 
 .contentDashboardEvaluate .MuiPaper-root {
     border: 1px solid silver;
-    margin-right: auto;
+    margin-right: 1rem;
     height: 22vh;
 }
 

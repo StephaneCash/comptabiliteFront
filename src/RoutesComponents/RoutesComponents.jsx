@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom"
+import AddNewEtudiant from '../components/eleves/AddNewEtudiant';
 import Dashborad from '../pages/Dashborad';
 import DataBank from '../pages/DataBank';
 import Eleves from '../pages/Eleves';
@@ -15,6 +16,7 @@ function RoutesComponents() {
                 <Route path="/dashboard" element={<Dashborad />} />
                 <Route path="/etudiants" element={<Eleves />} />
                 <Route path="/bank" element={<DataBank />} />
+                <Route path="/addFile" element={<AddNewEtudiant />} />
             </Routes>
         </BrowserRouter>
     )
