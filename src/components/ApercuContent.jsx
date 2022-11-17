@@ -40,11 +40,11 @@ function ApercuContent() {
             <Grid sm={4} xs={4} className={classes.stat} item={true} id="stat">
                 <Card>
                     <CardHeader
-                        title="Commandes"
+                        title="Etudiants"
                         avatar={
                             <Group />
                         }
-                        subheader="Nombre total des utilisateurs"
+                        subheader="Nombre total des étudiants"
                     />
                     <div className="d-flex">
                         <CardContent>
@@ -59,7 +59,7 @@ function ApercuContent() {
                                     style={{
                                         backgroundColor: "#0c50a2",
                                         color: "#fff",
-                                    }}>V<span className="span" >oir tout</span></Button>
+                                    }}>V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span></Button>
                             </Link>
                         </CardActions>
                     </div>
@@ -68,16 +68,16 @@ function ApercuContent() {
             <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
                 <Card>
                     <CardHeader
-                        title="Produits"
+                        title="Bank data"
                         avatar={
                             <Announcement />
                         }
-                        subheader="Nombre total des produits"
+                        subheader="Donnés banque"
                     />
                     <div className="d-flex">
                         <CardContent>
                             <Typography variant="h5" style={{ color: "#555" }}>
-                            H
+                                13
                             </Typography>
                         </CardContent>
                         <CardActions>
@@ -86,7 +86,7 @@ function ApercuContent() {
                                     className='btn-voir-tout'
                                     variant="contained"
                                     size="small" style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
-                                    V<span className="span">oir tout</span>
+                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
                                 </Button>
                             </Link>
                         </CardActions>
@@ -97,7 +97,7 @@ function ApercuContent() {
             <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
                 <Card>
                     <CardHeader
-                        title="Catégories"
+                        title="Détail"
                         avatar={
                             <ApartmentTwoTone />
                         }
@@ -106,7 +106,7 @@ function ApercuContent() {
                     <div className="d-flex">
                         <CardContent>
                             <Typography variant="h5" style={{ color: "#555" }}>
-                                Down
+                                12
                             </Typography>
                         </CardContent>
                         <CardActions>
@@ -116,7 +116,7 @@ function ApercuContent() {
                                     variant="contained"
                                     size="small"
                                     style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
-                                    V<span className="span">oir tout</span>
+                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
                                 </Button>
                             </Link>
                         </CardActions>

@@ -7,20 +7,23 @@ import Navbar from '../Navbar'
 function AddNewEtudiant() {
     const [data, setData] = useState([]);
     let navigate = useNavigate();
-    console.log(data)
     const sauveData = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('file', data)
-        axios.post('http://localhost:5000/api/read', formData)
-            .then(res => {
-                if (res.status === 200) {
-                    navigate("/bank")
-                }
-            })
-            .catch(err => {
-                console.log(err.response)
-            })
+        if (data.type !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+            alert('Format non pris en charge, seul XLS sont autorisés')
+        } else {
+            const formData = new FormData();
+            formData.append('file', data)
+            axios.post('http://localhost:5000/api/read', formData)
+                .then(res => {
+                    if (res.status === 200) {
+                        navigate("/bank")
+                    }
+                })
+                .catch(err => {
+                    console.log(err.response)
+                })
+        }
     };
 
     return (
