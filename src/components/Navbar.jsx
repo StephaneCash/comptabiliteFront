@@ -49,11 +49,13 @@ const Navbar = () => {
                         App
                     </Typography>
                     <div className={classes.icons}>
-                        <Badge badgeContent={4} color="secondary" className={classes.badge}>
+                        <Badge badgeContent={4} overlap="rectangular"
+                         color="secondary" className={classes.badge}>
                             <Mail />
                         </Badge>
                         <Link to='/annonces'>
-                            <Badge badgeContent={"6"} style={{ color: "#fff" }} color="secondary" className={classes.badge}>
+                            <Badge overlap="rectangular"
+                                badgeContent={"6"} style={{ color: "#fff" }} color="secondary" className={classes.badge}>
                                 <Notifications />
                             </Badge>
                         </Link>

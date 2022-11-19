@@ -8,13 +8,24 @@ import "../css/Eleves.css"
 
 function Eleves() {
     const [eleves, setEleves] = useState([]);
+    const [dataExcel, setDataExcel] = useState([]);
+
     const [valueSearch, setValue] = useState('');
 
     const getAllUsers = () => {
         axios.get('http://localhost:5000/api/etudiants')
             .then(res => {
-                console.log(res.data)
                 setEleves(res.data);
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+    };
+
+    const getAllExcelData = () => {
+        axios.get('http://localhost:5000/api/read')
+            .then(res => {
+                setDataExcel(res.data);
             })
             .catch(err => {
                 console.log(err.response)
@@ -23,6 +34,7 @@ function Eleves() {
 
     useEffect(() => {
         getAllUsers();
+        getAllExcelData();
     }, []);
 
     return (
@@ -35,8 +47,20 @@ function Eleves() {
                 <div className='col-sm-10'>
                     <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <div className="alert alert-success">
-                            <h6>Données de payement des étudiants <i className="fa fa-graduation-cap"></i></h6>
+                            <h6>Liste des étudiants classés par motif de payement <i className="fa fa-graduation-cap"></i></h6>
                             Nombre des étudiants {eleves && eleves.taille > 0 ? <>( {eleves.taille} )</> : "Pas de données"}
+                        </div>
+                        <div className="alert alert-info">
+                            {
+                                dataExcel && dataExcel.data !== undefined && dataExcel.data !== null ?
+                                    dataExcel.data.map((val, i) => {
+                                        return (
+                                            <div className='grille' key={val.id}>
+                                                <button className='btn btn-info'>{val.motif}</button> {' '}
+                                            </div>
+                                        )
+                                    }) : ""
+                            }
                         </div>
                         <div className='d-flex border p-2'>
                             <div className="col-sm-8">
