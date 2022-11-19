@@ -45,7 +45,7 @@ function DataBank() {
                                 </div>
                             </div>
                             <div className="col-sm-4">
-                                <NavLink to="/addFile">
+                                <NavLink to="addFile">
                                     <button style={{ float: "right" }} className='btn btn-primary'>
                                         Importer un fichier</button>
                                 </NavLink>

@@ -16,7 +16,7 @@ function RoutesComponents() {
                 <Route path="/dashboard" element={<Dashborad />} />
                 <Route path="/etudiants" element={<Eleves />} />
                 <Route path="/bank" element={<DataBank />} />
-                <Route path="/addFile" element={<AddNewEtudiant />} />
+                <Route path="/bank/addFile" element={<AddNewEtudiant />} />
             </Routes>
         </BrowserRouter>
     )

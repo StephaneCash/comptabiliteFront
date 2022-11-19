@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import GetAllEleves from '../components/eleves/GetAllEleves'
 import Leftbar from '../components/Leftbar'
 import Navbar from '../components/Navbar'
@@ -7,6 +8,8 @@ import "../css/Eleves.css"
 
 function Eleves() {
     const [eleves, setEleves] = useState([]);
+    const [valueSearch, setValue] = useState('');
+
     const getAllUsers = () => {
         axios.get('http://localhost:5000/api/etudiants')
             .then(res => {
@@ -31,7 +34,25 @@ function Eleves() {
                 </div>
                 <div className='col-sm-10'>
                     <div className='getAllEleves' style={{ padding: "1rem" }}>
-                        <table className='table table-striped'>
+                        <div className="alert alert-success">
+                            <h6>Données de payement des étudiants <i className="fa fa-graduation-cap"></i></h6>
+                            Nombre des étudiants {eleves && eleves.taille > 0 ? <>( {eleves.taille} )</> : "Pas de données"}
+                        </div>
+                        <div className='d-flex border p-2'>
+                            <div className="col-sm-8">
+                                <div className='col-sm-5'>
+                                    <input type="search" className="form-control" placeholder='Rechercher par numéro de référence'
+                                        onChange={(e) => setValue(e.target.value)} />
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <NavLink to="addFile">
+                                    <button style={{ float: "right" }} className='btn btn-primary'>
+                                        Importer un fichier</button>
+                                </NavLink>
+                            </div>
+                        </div>
+                        <table className='table table-striped table-bordered'>
                             <thead>
                                 <tr>
                                     <th>N°</th>
