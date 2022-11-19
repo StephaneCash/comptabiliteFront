@@ -1,7 +1,7 @@
 import { AppBar, Avatar, Badge, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import { Mail, Notifications, SettingsPower } from "@material-ui/icons";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     tooBar: {
@@ -37,10 +37,17 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
 
     const classes = useStyles();
+    const auth = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
 
     const handleNotif = () => {
         alert('Service non disoinible, maintenance en cours..., contacter le développeur !!!')
     }
+
+    const handleDeconnect = () => {
+        localStorage.removeItem("user");
+        navigate("/")
+    };
 
     return (
         <>
@@ -66,7 +73,7 @@ const Navbar = () => {
                             <Notifications />
                         </Badge>
                         <Avatar style={{ backgroundColor: "#555" }} src="s" />
-                        <SettingsPower className={classes.logout} />
+                        <SettingsPower className={classes.logout} onClick={handleDeconnect} />
                     </div>
                 </Toolbar>
             </AppBar>
