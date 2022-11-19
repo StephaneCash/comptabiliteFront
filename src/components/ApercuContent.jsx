@@ -40,11 +40,11 @@ function ApercuContent() {
             <Grid sm={4} xs={4} className={classes.stat} item={true} id="stat">
                 <Card>
                     <CardHeader
-                        title="Etudiants"
+                        title="Frais académiques"
                         avatar={
                             <Group />
                         }
-                        subheader="Nombre total des étudiants"
+                        subheader="Etudiants en ordre avec les frais académiques"
                     />
                     <div className="d-flex">
                         <CardContent>
@@ -97,11 +97,41 @@ function ApercuContent() {
             <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
                 <Card>
                     <CardHeader
-                        title="Détail"
+                        title="Etudiants enrolés"
                         avatar={
                             <ApartmentTwoTone />
                         }
-                        subheader="Nombre total de Catégories"
+                        subheader="Nombre total des étudiants enrolés"
+                    />
+                    <div className="d-flex">
+                        <CardContent>
+                            <Typography variant="h5" style={{ color: "#555" }}>
+                                12
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Link to="/categories">
+                                <Button
+                                    className='btn-voir-tout'
+                                    variant="contained"
+                                    size="small"
+                                    style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
+                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
+                                </Button>
+                            </Link>
+                        </CardActions>
+                    </div>
+                </Card>
+            </Grid>
+
+            <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
+                <Card>
+                    <CardHeader
+                        title="Inscrits"
+                        avatar={
+                            <ApartmentTwoTone />
+                        }
+                        subheader="Nombre total des étudiants inscrits"
                     />
                     <div className="d-flex">
                         <CardContent>

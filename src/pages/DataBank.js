@@ -23,7 +23,7 @@ function DataBank() {
     useEffect(() => {
         getAllUsers();
     }, []);
-    
+
     return (
         <div>
             <Navbar />
@@ -33,6 +33,10 @@ function DataBank() {
                 </div>
                 <div className='col-sm-10'>
                     <div className='getAllEleves' style={{ border: "1px solid silver", paddingTop: "1rem" }}>
+                        <div className="alert alert-success">
+                            <h6>Données de payement des étudiants <i className="fa fa-graduation-cap"></i></h6>
+                            Nombre des étudiants {data && data.data !== undefined && data.data !== null ? <>( {data.data.length} )</> : "Pas de données"}
+                        </div>
                         <div className='col-sm-5'>
                             <input type="search" className="form-control" placeholder='Rechercher...'
                                 onChange={(e) => setValue(e.target.value)} />
@@ -56,7 +60,7 @@ function DataBank() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <GetDataBank data={data} />
+                                <GetDataBank data={data} valueSearch={value} />
                             </tbody>
                         </table>
                     </div>

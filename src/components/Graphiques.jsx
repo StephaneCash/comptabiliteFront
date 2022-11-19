@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardActions, CardContent, CardHeader, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Card, CardContent, CardHeader, Grid, makeStyles } from "@material-ui/core";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 import { PeopleRounded, PostAddTwoTone } from '@material-ui/icons';
@@ -97,11 +97,11 @@ function Graphiques() {
                     <Grid sm={6} xs={6} item={true} className={classes.courb} id="courb">
                         <Card>
                             <CardHeader
-                                title="Statistics postes"
+                                title="Statistics étudiants"
                                 avatar={
                                     <PostAddTwoTone />
                                 }
-                                subheader="Représentation graphique de postes"
+                                subheader="Représentation graphique des étudiants enrolés"
                             />
                             <CardContent>
                                 <Bar data={data4} options={options2} />
@@ -111,11 +111,11 @@ function Graphiques() {
                     <Grid sm={6} xs={6} item={true} className={classes.courb} id="statics">
                         <Card>
                             <CardHeader
-                                title="Statistics achats"
+                                title="Courbe représentant la tendance de payement"
                                 avatar={
                                     <PeopleRounded />
                                 }
-                                subheader="Représentation graphique d'achats"
+                                subheader="Représentation graphique de payement par mois"
                             />
                             <CardContent>
                                 <Line

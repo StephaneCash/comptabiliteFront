@@ -3,26 +3,27 @@ import React from 'react'
 function GetDataBank(props) {
 
     let data = props.data;
-
-    console.log(data)
+    let valueSearch = props.valueSearch;
 
     return (
         <>
             {data && data.data ? (
-                data.data.map((data, i) => {
+                data.data.filter((data) => {
+                    return data.nom.toLowerCase().includes(valueSearch);
+                }).map((bank, i) => {
                     return (
                         <tr key={i}>
                             <td>{i + 1}</td>
-                            <td>{data.nom}</td>
-                            <td>{data.postnom}</td>
-                            <td>{data.prenom}</td>
-                            <td>{data.sexe}</td>
+                            <td>{bank.nom}</td>
+                            <td>{bank.postnom}</td>
+                            <td>{bank.prenom}</td>
+                            <td>{bank.sexe}</td>
                             <td>
-                                {data.filieres && data.filieres !== "undefined" && data.filieres.nom}
+                                {bank.filieres && bank.filieres !== "undefined" && bank.filieres.nom}
                             </td>
-                            <td>{data.numeroRef}</td>
-                            <td>{data.montant}</td>
-                            <td>{data.motif}</td>
+                            <td>{bank.numeroRef}</td>
+                            <td>{bank.montant}</td>
+                            <td>{bank.motif}</td>
 
 
                             <td>
