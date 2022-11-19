@@ -11,6 +11,8 @@ function Eleves() {
     const [dataExcel, setDataExcel] = useState([]);
 
     const [valueSearch, setValue] = useState('');
+    const [etatMotif, setEtatMotif] = useState(false);
+    const [id, setId] = useState(null);
 
     const getAllUsers = () => {
         axios.get('http://localhost:5000/api/etudiants')
@@ -31,6 +33,14 @@ function Eleves() {
                 console.log(err.response)
             })
     };
+
+    const handleMotif = (val) => {
+        setEtatMotif(!etatMotif);
+        setId(val.id)
+        console.log(" VALUE")
+    };
+
+   // console.log(id)
 
     useEffect(() => {
         getAllUsers();
@@ -56,7 +66,10 @@ function Eleves() {
                                     dataExcel.data.map((val, i) => {
                                         return (
                                             <div className='' key={val.id}>
-                                                <button className='btn btn-info'>{val.motif}</button> {' '}
+                                                <button className={id === val.id ? 'btn btn-info motifSelected' : 'btn btn-info'}
+                                                    onClick={() => handleMotif(val)}>
+                                                    {val.motif}
+                                                </button> {' '}
                                             </div>
                                         )
                                     }) : ""
@@ -65,14 +78,15 @@ function Eleves() {
                         <div className='d-flex border p-2'>
                             <div className="col-sm-8">
                                 <div className='col-sm-5'>
-                                    <input type="search" className="form-control" placeholder='Rechercher par numéro de référence'
+                                    <input type="search" className="form-control" 
+                                    placeholder='Rechercher par numéro de référence'
                                         onChange={(e) => setValue(e.target.value)} />
                                 </div>
                             </div>
                             <div className="col-sm-4">
                                 <NavLink to="addFile">
                                     <button style={{ float: "right" }} className='btn btn-primary'>
-                                        Importer un fichier</button>
+                                        Ajouter un étudiant</button>
                                 </NavLink>
                             </div>
                         </div>
