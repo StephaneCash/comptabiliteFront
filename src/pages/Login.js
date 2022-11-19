@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Paper, Typography, Link, Button } from "@material-ui/core"
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import swal from "sweetalert";
-
+import swal from 'sweetalert';
 
 function Login() {
     const paperStyle = { padding: 20, height: 'auto', width: 340, margin: '20px auto', backgroundColor: 'white' }
