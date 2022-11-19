@@ -21,3 +21,25 @@
 .graphiques .MuiGrid-root{
     margin-right: 1rem;
 }
+
+.grille {
+    max-width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 160px);
+    justify-content: center;
+    grid-gap: 5px;
+    grid-column: 89px;
+}
+
+.grille button:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.grille button {
+    width: 160px;
+    height: auto;
+    transition: transform 0.4s;
+    border-radius: 1px;
+}

@@ -50,12 +50,12 @@ function Eleves() {
                             <h6>Liste des étudiants classés par motif de payement <i className="fa fa-graduation-cap"></i></h6>
                             Nombre des étudiants {eleves && eleves.taille > 0 ? <>( {eleves.taille} )</> : "Pas de données"}
                         </div>
-                        <div className="alert alert-info">
+                        <div className="alert alert-info grille">
                             {
                                 dataExcel && dataExcel.data !== undefined && dataExcel.data !== null ?
                                     dataExcel.data.map((val, i) => {
                                         return (
-                                            <div className='grille' key={val.id}>
+                                            <div className='' key={val.id}>
                                                 <button className='btn btn-info'>{val.motif}</button> {' '}
                                             </div>
                                         )
