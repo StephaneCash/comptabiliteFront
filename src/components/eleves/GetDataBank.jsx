@@ -9,7 +9,7 @@ function GetDataBank(props) {
         <>
             {data && data.data ? (
                 data.data.filter((data) => {
-                    return data.nom.toLowerCase().includes(valueSearch);
+                    return data.numeroRef.includes(valueSearch);
                 }).map((bank, i) => {
                     return (
                         <tr key={i}>
@@ -21,7 +21,7 @@ function GetDataBank(props) {
                             <td>
                                 {bank.filieres && bank.filieres !== "undefined" && bank.filieres.nom}
                             </td>
-                            <td>{bank.numeroRef}</td>
+                            <td>{valueSearch ? bank.numeroRef : "********"}</td>
                             <td>{bank.montant}</td>
                             <td>{bank.motif}</td>
 

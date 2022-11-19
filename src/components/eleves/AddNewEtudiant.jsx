@@ -34,9 +34,9 @@ function AddNewEtudiant() {
                     <Leftbar />
                 </div>
                 <div className='col-sm-10'>
-                    <div className='getAllEleves col-sm-6' style={{ border: "1px solid silver", paddingTop: "1rem" }}>
+                    <div className='getAllEleves col-sm-6' style={{ padding: "1rem" }}>
                         <br />
-
+                        <div className="alert alert-success">Importer votre fichier Excel</div>
                         <form>
                             <label>Chosir un fichier à importer, uniquement Excel</label>
                             <br />

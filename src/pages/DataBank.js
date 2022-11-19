@@ -40,7 +40,7 @@ function DataBank() {
                         <div className='d-flex border p-2'>
                             <div className="col-sm-8">
                                 <div className='col-sm-5'>
-                                    <input type="search" className="form-control" placeholder='Rechercher...'
+                                    <input type="search" className="form-control" placeholder='Rechercher par numéro de référence'
                                         onChange={(e) => setValue(e.target.value)} />
                                 </div>
                             </div>
