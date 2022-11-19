@@ -72,7 +72,7 @@ function Eleves() {
                                                 </button> {' '}
                                             </div>
                                         )
-                                    }) : ""
+                                    }) : "Pas de données"
                             }
                         </div>
                         <div className='d-flex border p-2'>
@@ -84,7 +84,7 @@ function Eleves() {
                                 </div>
                             </div>
                             <div className="col-sm-4">
-                                <NavLink to="addFile">
+                                <NavLink to="addEtudiant">
                                     <button style={{ float: "right" }} className='btn btn-primary'>
                                         Ajouter un étudiant</button>
                                 </NavLink>
