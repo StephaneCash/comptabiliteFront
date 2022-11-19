@@ -30,7 +30,7 @@ function Eleves() {
                     <Leftbar />
                 </div>
                 <div className='col-sm-10'>
-                    <div className='getAllEleves' style={{border: "1px solid silver", paddingTop: "1rem" }}>
+                    <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <table className='table table-striped'>
                             <thead>
                                 <tr>

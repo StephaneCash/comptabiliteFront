@@ -5,6 +5,8 @@ function GetDataBank(props) {
     let data = props.data;
     let valueSearch = props.valueSearch;
 
+    console.log(data)
+
     return (
         <>
             {data && data.data ? (
@@ -19,16 +21,16 @@ function GetDataBank(props) {
                             <td>{bank.prenom}</td>
                             <td>{bank.sexe}</td>
                             <td>
-                                {bank.filieres && bank.filieres !== "undefined" && bank.filieres.nom}
+                                {bank.filiere}
                             </td>
                             <td>{valueSearch ? bank.numeroRef : "********"}</td>
                             <td>{bank.montant}</td>
                             <td>{bank.motif}</td>
 
-
-                            <td>
-                                <i className='fa fa-edit me-2'></i>
-                                <i className='fa fa-trash'></i>
+                            <td style={{ width: "140px" }}>
+                                <button className='btn btn-outline-danger'>
+                                    <i className='fa fa-trash'></i> Supprimer
+                                </button>
                             </td>
                         </tr>
                     )

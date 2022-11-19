@@ -43,10 +43,10 @@ const Navbar = () => {
             <AppBar position="fixed">
                 <Toolbar className={classes.tooBar}>
                     <Typography variant="h6" component="h2" className={classes.logoLg}>
-                        E-Tableau
+                        App
                     </Typography>
                     <Typography variant="h6" component="h2" className={classes.logoSm}>
-                        E-Tableau
+                        App
                     </Typography>
                     <div className={classes.icons}>
                         <Badge badgeContent={4} color="secondary" className={classes.badge}>

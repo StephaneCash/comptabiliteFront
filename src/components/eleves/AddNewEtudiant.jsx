@@ -13,7 +13,7 @@ function AddNewEtudiant() {
         if (data.type !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
             swal({
                 icon: "error",
-                text: 'Format non pris en charge, seul XLS sont autorisés'
+                text: 'Format non pris en charge, seul XLS sont autorisés.'
             });
         } else {
             const formData = new FormData();
