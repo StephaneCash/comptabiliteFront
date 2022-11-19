@@ -8,14 +8,16 @@ import Inscription from '../pages/Inscription';
 import Login from '../pages/Login';
 
 function RoutesComponents() {
+    let storageUser = localStorage.getItem("user");
+    console.log(storageUser, " ::: USER")
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path='/inscription' element={<Inscription />} />
-                <Route path="/dashboard" element={<Dashborad />} />
-                <Route path="/etudiants" element={<Eleves />} />
-                <Route path="/bank" element={<DataBank />} />
+                <Route path="/dashboard" element={storageUser !== null ? <Dashborad /> : <Login />} />
+                <Route path="/etudiants" element={storageUser !== null ? <Eleves /> : <Login />} />
+                <Route path="/bank" element={storageUser !== null ? <DataBank /> : <Login />} />
                 <Route path="/addFile" element={<AddNewEtudiant />} />
             </Routes>
         </BrowserRouter>

@@ -3,14 +3,12 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { Grid, Paper, Typography, Link, Button } from "@material-ui/core"
-
+import swal from "sweetalert";
 
 function Inscription() {
 
     const paperStyle = { padding: 20, height: 'auto', width: 340, margin: '20px auto', backgroundColor: 'white' }
-    const backgroundColorAvatar = {
-        width: "50px"
-    };
+
     const styleTextField = { marginBottom: '10px' };
 
     const [btnState, setBtnState] = useState(false);
@@ -54,6 +52,9 @@ function Inscription() {
                     localStorage.setItem('user', JSON.stringify(res.data));
                 }
                 navigate('/');
+                swal({
+                    icon: "success", text: res.data.message
+                })
                 setBtnState(false);
             }).catch(erreur => {
                 console.log(erreur)
@@ -72,7 +73,6 @@ function Inscription() {
             <Grid>
                 <Paper elevation={10} style={paperStyle}>
                     <Grid align="center" style={{ backgroundColor: 'white' }}>
-                        <img src="" style={backgroundColorAvatar} alt="avatr" />
                         <h4 className='mt-3'>S'inscrire</h4>
                         <i className='fa fa-user-circle fa-2x'></i>
                     </Grid>

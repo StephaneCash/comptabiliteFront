@@ -23,7 +23,7 @@ function DataBank() {
     useEffect(() => {
         getAllUsers();
     }, []);
-
+    
     return (
         <div>
             <Navbar />
@@ -34,8 +34,8 @@ function DataBank() {
                 <div className='col-sm-10'>
                     <div className='getAllEleves' style={{ border: "1px solid silver", paddingTop: "1rem" }}>
                         <div className='col-sm-5'>
-                            <input type="search" className="form-control" placeholder='Rechercher...' 
-                            onChange={(e)=>setValue(e.target.value)} />
+                            <input type="search" className="form-control" placeholder='Rechercher...'
+                                onChange={(e) => setValue(e.target.value)} />
                             <NavLink to="/addFile">
                                 <button className='btn btn-primary mt-3'>Importer un fichier</button>
                             </NavLink>

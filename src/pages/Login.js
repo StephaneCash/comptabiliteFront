@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Paper, Typography, Link, Button } from "@material-ui/core"
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import swal from "sweetalert";
+
 
 function Login() {
     const paperStyle = { padding: 20, height: 'auto', width: 340, margin: '20px auto', backgroundColor: 'white' }
-    const backgroundColorAvatar = {
-        width: "50px"
-    };
+
     const styleTextField = { marginBottom: '10px' };
 
     const [btnState, setBtnState] = useState(false);
@@ -41,7 +41,7 @@ function Login() {
     const connecter = () => {
         setBtnState(true);
 
-        const url = 'http://localhost:5000/api/user/login';
+        const url = 'http://localhost:5000/api/user/authentification';
 
         if (pwd !== "" && email !== "") {
             axios.post(url, { email, password: pwd }).then(res => {
@@ -50,8 +50,11 @@ function Login() {
                 if (res.data.jeton) {
                     localStorage.setItem('user', JSON.stringify(res.data));
                 }
+                swal({
+                    icon: "success", text: res.data.message
+                })
 
-                navigate('/');
+                navigate('/dashboard');
                 setBtnState(false);
             }).catch(erreur => {
                 console.log(erreur)
