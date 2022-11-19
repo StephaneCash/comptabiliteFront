@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ApercuContent from '../components/ApercuContent';
 import Leftbar from '../components/Leftbar';
 import Navbar from '../components/Navbar';
@@ -6,8 +6,6 @@ import "../css/Dashboard.css";
 import Graphiques from '../components/Graphiques';
 
 function Dashborad() {
-    const [data, setData] = useState('')
-    console.log(data)
     
     return (
         <>
@@ -16,7 +14,7 @@ function Dashborad() {
                 <div className='col-sm-2'>
                     <Leftbar />
                 </div>
-                <div className='col-sm-10'>
+                <div className='col-sm-10 p-3'>
                     <ApercuContent />
                     <Graphiques />
                 </div>

@@ -9,17 +9,15 @@
 
 .contentDashboardEvaluate .MuiPaper-root {
     border: 1px solid silver;
-    margin-right: 1rem;
     height: 22vh;
+    margin-right: auto !important;
+    margin-left: auto;
+    gap: auto;
 }
 
 .graphiques .MuiPaper-root {
     border: 1px solid silver;
     gap: 1rem;
-}
-
-.graphiques .MuiGrid-root{
-    margin-right: 1rem;
 }
 
 .grille {

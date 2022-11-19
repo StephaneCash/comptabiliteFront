@@ -37,7 +37,7 @@ function ApercuContent() {
 
     return (
         <div className='contentDashboardEvaluate'>
-            <Grid sm={4} xs={4} className={classes.stat} item={true} id="stat">
+            <Grid sm={4} xs={4} className={classes.stat} style={{marginRight:"1rem"}} item={true} id="stat">
                 <Card>
                     <CardHeader
                         title="Frais académiques"
@@ -48,10 +48,10 @@ function ApercuContent() {
                     />
                     <div className="d-flex">
                         <CardContent>
-                            <Typography variant="h5" style={{ color: "#555" }}></Typography>
+                            <Typography variant="h5" style={{ color: "#555" }}>19</Typography>
                         </CardContent>
                         <CardActions>
-                            <Link to="/commandes">
+                            <Link to="/etudiants">
                                 <Button
                                     className='btn-voir-tout'
                                     variant="contained"
@@ -65,7 +65,7 @@ function ApercuContent() {
                     </div>
                 </Card>
             </Grid>
-            <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
+            <Grid sm={4} xs={4} item={true} style={{marginRight:"1rem"}} className={classes.stat} id="stat">
                 <Card>
                     <CardHeader
                         title="Bank data"
@@ -81,7 +81,7 @@ function ApercuContent() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Link to="/produits">
+                            <Link to="/etudiants">
                                 <Button
                                     className='btn-voir-tout'
                                     variant="contained"
@@ -94,7 +94,7 @@ function ApercuContent() {
                 </Card>
             </Grid>
 
-            <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
+            <Grid sm={4} xs={4} item={true} style={{marginRight:"1rem"}} className={classes.stat} id="stat">
                 <Card>
                     <CardHeader
                         title="Etudiants enrolés"
@@ -110,7 +110,7 @@ function ApercuContent() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Link to="/categories">
+                            <Link to="/etudiants">
                                 <Button
                                     className='btn-voir-tout'
                                     variant="contained"
@@ -140,7 +140,7 @@ function ApercuContent() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Link to="/categories">
+                            <Link to="/etudiants">
                                 <Button
                                     className='btn-voir-tout'
                                     variant="contained"

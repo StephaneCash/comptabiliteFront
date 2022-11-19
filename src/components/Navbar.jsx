@@ -38,6 +38,10 @@ const Navbar = () => {
 
     const classes = useStyles();
 
+    const handleNotif = () => {
+        alert('Service non disoinible, maintenance en cours..., contacter le développeur !!!')
+    }
+
     return (
         <>
             <AppBar position="fixed">
@@ -49,16 +53,18 @@ const Navbar = () => {
                         App
                     </Typography>
                     <div className={classes.icons}>
-                        <Badge badgeContent={4} overlap="rectangular"
-                         color="secondary" className={classes.badge}>
+                        <Badge badgeContent={3} overlap="rectangular"
+                            onClick={handleNotif}
+                            style={{ cursor: "pointer" }}
+                            color="secondary" className={classes.badge}>
                             <Mail />
                         </Badge>
-                        <Link to='/annonces'>
-                            <Badge overlap="rectangular"
-                                badgeContent={"6"} style={{ color: "#fff" }} color="secondary" className={classes.badge}>
-                                <Notifications />
-                            </Badge>
-                        </Link>
+                        <Badge overlap="rectangular"
+                            onClick={handleNotif}
+                            badgeContent={"1"} style={{ color: "#fff", cursor: "pointer" }}
+                            color="secondary" className={classes.badge}>
+                            <Notifications />
+                        </Badge>
                         <Avatar style={{ backgroundColor: "#555" }} src="s" />
                         <SettingsPower className={classes.logout} />
                     </div>

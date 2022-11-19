@@ -38,7 +38,7 @@ function Graphiques() {
         labels: ['Nov 01', 'Nov 02', 'Nov 03', 'Nov 04', 'Nov 05', 'Nov 06', 'Nov 07'],
         datasets: [
             {
-                label: 'Users',
+                label: 'Etudiants enrolés',
                 data: [2, 9, 3, 5, 2, 3, 6],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

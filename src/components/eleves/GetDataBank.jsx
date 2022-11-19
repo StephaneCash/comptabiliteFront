@@ -28,7 +28,7 @@ function GetDataBank(props) {
                             <td>{bank.motif}</td>
 
                             <td style={{ width: "140px" }}>
-                                <button className='btn btn-outline-danger'>
+                                <button className='btn btn-outline-primary'>
                                     <i className='fa fa-trash'></i> Supprimer
                                 </button>
                             </td>
