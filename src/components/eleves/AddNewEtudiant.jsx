@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import Leftbar from '../Leftbar'
 import Navbar from '../Navbar'
 
@@ -10,7 +11,10 @@ function AddNewEtudiant() {
     const sauveData = (e) => {
         e.preventDefault();
         if (data.type !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
-            alert('Format non pris en charge, seul XLS sont autorisés')
+            swal({
+                icon: "error",
+                text: 'Format non pris en charge, seul XLS sont autorisés'
+            });
         } else {
             const formData = new FormData();
             formData.append('file', data)
