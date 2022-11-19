@@ -32,19 +32,25 @@ function DataBank() {
                     <Leftbar />
                 </div>
                 <div className='col-sm-10'>
-                    <div className='getAllEleves' style={{ border: "1px solid silver", paddingTop: "1rem" }}>
+                    <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <div className="alert alert-success">
                             <h6>Données de payement des étudiants <i className="fa fa-graduation-cap"></i></h6>
                             Nombre des étudiants {data && data.data !== undefined && data.data !== null ? <>( {data.data.length} )</> : "Pas de données"}
                         </div>
-                        <div className='col-sm-5'>
-                            <input type="search" className="form-control" placeholder='Rechercher...'
-                                onChange={(e) => setValue(e.target.value)} />
-                            <NavLink to="/addFile">
-                                <button className='btn btn-primary mt-3'>Importer un fichier</button>
-                            </NavLink>
+                        <div className='d-flex border p-2'>
+                            <div className="col-sm-4">
+                                <div className='col-sm-5'>
+                                    <input type="search" className="form-control" placeholder='Rechercher...'
+                                        onChange={(e) => setValue(e.target.value)} />
+                                </div>
+                            </div>
+                            <div className="col-sm-8">
+                                <NavLink to="/addFile">
+                                    <button style={{ float: "right" }} className='btn btn-primary'>Importer un fichier</button>
+                                </NavLink>
+                            </div>
                         </div>
-                        <table className='table table-striped'>
+                        <table className='table table-striped table-bordered mt-3'>
                             <thead>
                                 <tr>
                                     <th>N°</th>
