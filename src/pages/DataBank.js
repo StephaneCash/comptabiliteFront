@@ -38,15 +38,16 @@ function DataBank() {
                             Nombre des étudiants {data && data.data !== undefined && data.data !== null ? <>( {data.data.length} )</> : "Pas de données"}
                         </div>
                         <div className='d-flex border p-2'>
-                            <div className="col-sm-4">
+                            <div className="col-sm-8">
                                 <div className='col-sm-5'>
                                     <input type="search" className="form-control" placeholder='Rechercher...'
                                         onChange={(e) => setValue(e.target.value)} />
                                 </div>
                             </div>
-                            <div className="col-sm-8">
+                            <div className="col-sm-4">
                                 <NavLink to="/addFile">
-                                    <button style={{ float: "right" }} className='btn btn-primary'>Importer un fichier</button>
+                                    <button style={{ float: "right" }} className='btn btn-primary'>
+                                        Importer un fichier</button>
                                 </NavLink>
                             </div>
                         </div>
