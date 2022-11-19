@@ -13,13 +13,13 @@ function RoutesComponents() {
         <BrowserRouter>
             <Routes>
                 <Route element={<PrivateRoute />}>
-                    <Route path='/inscription' element={<Inscription />} />
                     <Route path="/dashboard" element={<Dashborad />} />
                     <Route path="/etudiants" element={<Eleves />} />
                     <Route path="/bank" element={<DataBank />} />
                     <Route path="/bank/addFile" element={<AddNewEtudiant />} />
                 </Route>
                 <Route path='/' element={<Login />} />
+                <Route path='/inscription' element={<Inscription />} />
             </Routes>
         </BrowserRouter>
     )
