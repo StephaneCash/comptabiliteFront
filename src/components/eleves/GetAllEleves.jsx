@@ -1,27 +1,40 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 function GetAllEleves(props) {
 
-    let eleves = props.eleves;
+    let dataExcel = props.dataExcel;
+    let state = props.state;
+    
+    useEffect(() => {
+        if (state === undefined && state === null) {
+            state='';
+        }
+    }, []);
 
     return (
         <>
-            {eleves && eleves.taille > 0 ? (
-                eleves.data.map((eleve, i) => {
+            {dataExcel && dataExcel.data ? (
+                dataExcel.data.filter((data) => {
+                    return data.filiere.includes(state ? state.val : "");
+                }).map((bank, i) => {
                     return (
                         <tr key={i}>
                             <td>{i + 1}</td>
-                            <td>{eleve.nom}</td>
-                            <td>{eleve.postnom}</td>
-                            <td>{eleve.prenom}</td>
-                            <td>{eleve.sexe}</td>
+                            <td>{bank.nom}</td>
+                            <td>{bank.postnom}</td>
+                            <td>{bank.prenom}</td>
+                            <td>{bank.sexe}</td>
                             <td>
-                                {eleve.filieres && eleve.filieres !== "undefined" && eleve.filieres.nom}
+                                {bank.filiere}
                             </td>
+                            <td>{state ? bank.numeroRef : "********"}</td>
+                            <td>{bank.montant}</td>
+                            <td>{bank.motif}</td>
 
-                            <td>
-                                <i className='fa fa-edit me-2'></i>
-                                <i className='fa fa-trash'></i>
+                            <td style={{ width: "140px" }}>
+                                <button className='btn btn-outline-primary'>
+                                    <i className='fa fa-trash'></i> Supprimer
+                                </button>
                             </td>
                         </tr>
                     )
@@ -29,7 +42,7 @@ function GetAllEleves(props) {
 
             ) :
                 <tr>
-                    <td colSpan='7px' className='text-center'>
+                    <td colSpan='10px' className='text-center'>
                         <i className='fa fa-spinner fa-pulse fa-2x'></i> Chargement...
                     </td>
                 </tr>

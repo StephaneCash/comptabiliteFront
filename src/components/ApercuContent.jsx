@@ -80,45 +80,46 @@ function ApercuContent(props) {
 
     return (
         <div className='contentDashboardEvaluate'>
-            <div className='alert' style={{backgroundColor:"#efefef"}}>
+            <div className='alert' style={{ backgroundColor: "#efefef" }}>
                 <div className="grilleApercu">
                     {
-                        filieres && filieres.map((value, i) => {
-                            return (
-                                <Grid className={classes.stat} key={i}
-                                    item={true} id="stat">
-                                    <Card>
-                                        <CardHeader
-                                            title="Frais"
-                                            avatar={
-                                                <Group />
-                                            }
-                                            subheader={`Etudiants de ${value}`}
-                                        />
-                                        <div className="d-flex">
-                                            <CardContent>
-                                                <Typography variant="h5" style={{ color: "#555" }}>
-                                                    {lengthFiliere[`${value}`]}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Link to={{ pathname: "/etudiants" }} state={{ val: "val" }}>
-                                                    <Button
-                                                        className='btn-voir-tout'
-                                                        variant="contained"
-                                                        size="small"
-                                                        style={{
-                                                            backgroundColor: "#0c50a2",
-                                                            color: "#fff",
-                                                        }}>V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span></Button>
-                                                </Link>
-                                            </CardActions>
-                                        </div>
-                                    </Card>
-                                </Grid>
-                            )
-                        })
-
+                        filieres ? filieres.length > 0 ?
+                            filieres.map((value, i) => {
+                                return (
+                                    <Grid className={classes.stat} key={i}
+                                        item={true} id="stat">
+                                        <Card>
+                                            <CardHeader
+                                                title="Frais"
+                                                avatar={
+                                                    <Group />
+                                                }
+                                                subheader={`Etudiants de ${value}`}
+                                            />
+                                            <div className="d-flex">
+                                                <CardContent>
+                                                    <Typography variant="h5" style={{ color: "#555" }}>
+                                                        {lengthFiliere[`${value}`]}
+                                                    </Typography>
+                                                </CardContent>
+                                                <CardActions>
+                                                    <Link to={{ pathname: "/etudiants" }} state={{ val: value }}>
+                                                        <Button
+                                                            className='btn-voir-tout'
+                                                            variant="contained"
+                                                            size="small"
+                                                            style={{
+                                                                backgroundColor: "#0c50a2",
+                                                                color: "#fff",
+                                                            }}>V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span></Button>
+                                                    </Link>
+                                                </CardActions>
+                                            </div>
+                                        </Card>
+                                    </Grid>
+                                )
+                            })
+                            : "Serveur down" : "Pas de data"
                     }
                 </div>
             </div>

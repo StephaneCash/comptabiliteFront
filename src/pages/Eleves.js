@@ -1,28 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import GetAllEleves from '../components/eleves/GetAllEleves'
 import Leftbar from '../components/Leftbar'
 import Navbar from '../components/Navbar'
 import "../css/Eleves.css"
 
 function Eleves() {
-    const [eleves, setEleves] = useState([]);
     const [dataExcel, setDataExcel] = useState([]);
 
     const [valueSearch, setValue] = useState('');
     const [etatMotif, setEtatMotif] = useState(false);
     const [id, setId] = useState(null);
 
-    const getAllUsers = () => {
-        axios.get('http://localhost:5000/api/etudiants')
-            .then(res => {
-                setEleves(res.data);
-            })
-            .catch(err => {
-                console.log(err.response)
-            })
-    };
+    const location = useLocation();
+    const { state } = location;
 
     const getAllExcelData = () => {
         axios.get('http://localhost:5000/api/read')
@@ -37,13 +29,11 @@ function Eleves() {
     const handleMotif = (val) => {
         setEtatMotif(!etatMotif);
         setId(val.id)
-        console.log(" VALUE")
     };
 
    // console.log(id)
 
     useEffect(() => {
-        getAllUsers();
         getAllExcelData();
     }, []);
 
@@ -58,7 +48,7 @@ function Eleves() {
                     <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <div className="alert alert-success">
                             <h6>Liste des étudiants classés par motif de payement <i className="fa fa-graduation-cap"></i></h6>
-                            Nombre des étudiants {eleves && eleves.taille > 0 ? <>( {eleves.taille} )</> : "Pas de données"}
+                            Nombre des étudiants {dataExcel && dataExcel.data !== undefined ? <>( {dataExcel.data.length} )</> : "Pas de données"}
                         </div>
                         <div className="alert alert-info grille">
                             {
@@ -103,7 +93,7 @@ function Eleves() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <GetAllEleves eleves={eleves} />
+                                <GetAllEleves dataExcel={dataExcel} state={state} valueSearch={valueSearch} />
                             </tbody>
                         </table>
                     </div>
