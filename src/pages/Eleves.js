@@ -12,6 +12,8 @@ function Eleves() {
     const [valueSearch, setValue] = useState('');
     const [etatMotif, setEtatMotif] = useState(false);
     const [id, setId] = useState(null);
+    const [valMotif, setValMotif] = useState('');
+    const [dataUniques, setDataUniques] = useState([]);
 
     const location = useLocation();
     const { state } = location;
@@ -28,12 +30,24 @@ function Eleves() {
 
     const handleMotif = (val) => {
         setEtatMotif(!etatMotif);
-        setId(val.id)
+        setId(val)
+        setValMotif(val.motif);
     };
 
     useEffect(() => {
         getAllExcelData();
     }, []);
+
+    useEffect(() => {
+        let array = [];
+        if (dataExcel) {
+            dataExcel && dataExcel.data && dataExcel.data.map((value) => {
+                array.push(value.motif)
+                let valuesUniques = [...new Set(array)]
+                setDataUniques(valuesUniques);
+            })
+        }
+    }, [dataExcel]);
 
     return (
         <div>
@@ -50,13 +64,13 @@ function Eleves() {
                         </div>
                         <div className="alert alert-info grille">
                             {
-                                dataExcel && dataExcel.data !== undefined && dataExcel.data !== null ?
-                                    dataExcel.data.map((val, i) => {
+                                dataUniques && dataUniques ?
+                                    dataUniques.map((val, i) => {
                                         return (
-                                            <div className='' key={val.id}>
-                                                <button className={id === val.id ? 'btn btn-info motifSelected' : 'btn btn-info'}
+                                            <div className='' key={i}>
+                                                <button className={id === val ? 'btn btn-info motifSelected' : 'btn btn-info'}
                                                     onClick={() => handleMotif(val)}>
-                                                    {val.motif}
+                                                    {val}
                                                 </button> {' '}
                                             </div>
                                         )
