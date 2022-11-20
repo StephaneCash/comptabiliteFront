@@ -16,9 +16,7 @@ function GetAllEleves(props) {
                             <td>{eleve.prenom}</td>
                             <td>{eleve.sexe}</td>
                             <td>
-                                <td>
-                                    {eleve.filieres && eleve.filieres !== "undefined" && eleve.filieres.nom}
-                                </td>
+                                {eleve.filieres && eleve.filieres !== "undefined" && eleve.filieres.nom}
                             </td>
 
                             <td>

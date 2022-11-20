@@ -5,8 +5,6 @@ function GetDataBank(props) {
     let data = props.data;
     let valueSearch = props.valueSearch;
 
-    console.log(data)
-
     return (
         <>
             {data && data.data ? (

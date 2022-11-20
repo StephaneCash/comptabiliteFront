@@ -3,16 +3,11 @@
 }
 
 .contentDashboardEvaluate {
-    display: flex;
     margin-top: 1rem;
 }
 
 .contentDashboardEvaluate .MuiPaper-root {
     border: 1px solid silver;
-    height: 22vh;
-    margin-right: auto !important;
-    margin-left: auto;
-    gap: auto;
 }
 
 .graphiques .MuiPaper-root {
@@ -37,6 +32,22 @@
 
 .grille button {
     width: 160px;
+    height: auto;
+    transition: transform 0.4s;
+    border-radius: 1px;
+}
+
+.grilleApercu {
+    max-width: auto;
+    height: auto;
+    grid-gap: 5px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 240px);
+}
+
+.contentDashboardEvaluate .grille .MuiPaper-root {
+    width: 240px;
     height: auto;
     transition: transform 0.4s;
     border-radius: 1px;

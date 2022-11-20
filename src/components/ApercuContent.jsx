@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, CardActions, CardContent, CardHeader, Grid, Typography, makeStyles } from "@material-ui/core";
-import { Announcement, ApartmentTwoTone, Group, MonetizationOn, PeopleRounded, PostAddTwoTone } from "@material-ui/icons";
+import { Group } from "@material-ui/icons";
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,127 +33,95 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ApercuContent() {
+function ApercuContent(props) {
     const classes = useStyles();
+    const [filieres, setFilieres] = useState([]);
+    const [arr, setArr] = useState([]);
+
+    const [lengthFiliere, setLengthFiliere] = useState(null);
+
+    const [data, setData] = useState([]);
+
+    const getAllDataBank = () => {
+        axios.get('http://localhost:5000/api/read')
+            .then(res => {
+                setData(res.data);
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+    };
+
+    useEffect(() => {
+        getAllDataBank();
+    }, []);
+
+    useEffect(() => {
+        let array = [];
+        if (data) {
+            data && data.data && data.data.map((value) => {
+                array.push(value.filiere)
+                let valuesUniques = [...new Set(array)]
+                setFilieres(valuesUniques);
+                setArr(array);
+            })
+        }
+    }, [data])
+
+    useEffect(() => {
+        let count = {};
+        if (arr) {
+            arr.forEach(element => {
+                count[element] = (count[element] || 0) + 1;
+            })
+        }
+        setLengthFiliere(count)
+    }, [arr]);
 
     return (
         <div className='contentDashboardEvaluate'>
-            <Grid sm={4} xs={4} className={classes.stat} style={{marginRight:"1rem"}} item={true} id="stat">
-                <Card>
-                    <CardHeader
-                        title="Frais académiques"
-                        avatar={
-                            <Group />
-                        }
-                        subheader="Etudiants en ordre avec les frais académiques"
-                    />
-                    <div className="d-flex">
-                        <CardContent>
-                            <Typography variant="h5" style={{ color: "#555" }}>19</Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Link to="/etudiants">
-                                <Button
-                                    className='btn-voir-tout'
-                                    variant="contained"
-                                    size="small"
-                                    style={{
-                                        backgroundColor: "#0c50a2",
-                                        color: "#fff",
-                                    }}>V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span></Button>
-                            </Link>
-                        </CardActions>
-                    </div>
-                </Card>
-            </Grid>
-            <Grid sm={4} xs={4} item={true} style={{marginRight:"1rem"}} className={classes.stat} id="stat">
-                <Card>
-                    <CardHeader
-                        title="Bank data"
-                        avatar={
-                            <Announcement />
-                        }
-                        subheader="Donnés banque"
-                    />
-                    <div className="d-flex">
-                        <CardContent>
-                            <Typography variant="h5" style={{ color: "#555" }}>
-                                13
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Link to="/etudiants">
-                                <Button
-                                    className='btn-voir-tout'
-                                    variant="contained"
-                                    size="small" style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
-                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
-                                </Button>
-                            </Link>
-                        </CardActions>
-                    </div>
-                </Card>
-            </Grid>
+            <div className='alert' style={{backgroundColor:"#efefef"}}>
+                <div className="grilleApercu">
+                    {
+                        filieres && filieres.map((value, i) => {
+                            return (
+                                <Grid className={classes.stat} key={i}
+                                    item={true} id="stat">
+                                    <Card>
+                                        <CardHeader
+                                            title="Frais"
+                                            avatar={
+                                                <Group />
+                                            }
+                                            subheader={`Etudiants de ${value}`}
+                                        />
+                                        <div className="d-flex">
+                                            <CardContent>
+                                                <Typography variant="h5" style={{ color: "#555" }}>
+                                                    {lengthFiliere[`${value}`]}
+                                                </Typography>
+                                            </CardContent>
+                                            <CardActions>
+                                                <Link to={{ pathname: "/etudiants" }} state={{ val: "val" }}>
+                                                    <Button
+                                                        className='btn-voir-tout'
+                                                        variant="contained"
+                                                        size="small"
+                                                        style={{
+                                                            backgroundColor: "#0c50a2",
+                                                            color: "#fff",
+                                                        }}>V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span></Button>
+                                                </Link>
+                                            </CardActions>
+                                        </div>
+                                    </Card>
+                                </Grid>
+                            )
+                        })
 
-            <Grid sm={4} xs={4} item={true} style={{marginRight:"1rem"}} className={classes.stat} id="stat">
-                <Card>
-                    <CardHeader
-                        title="Etudiants enrolés"
-                        avatar={
-                            <ApartmentTwoTone />
-                        }
-                        subheader="Nombre total des étudiants enrolés"
-                    />
-                    <div className="d-flex">
-                        <CardContent>
-                            <Typography variant="h5" style={{ color: "#555" }}>
-                                12
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Link to="/etudiants">
-                                <Button
-                                    className='btn-voir-tout'
-                                    variant="contained"
-                                    size="small"
-                                    style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
-                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
-                                </Button>
-                            </Link>
-                        </CardActions>
-                    </div>
-                </Card>
-            </Grid>
-
-            <Grid sm={4} xs={4} item={true} className={classes.stat} id="stat">
-                <Card>
-                    <CardHeader
-                        title="Inscrits"
-                        avatar={
-                            <ApartmentTwoTone />
-                        }
-                        subheader="Nombre total des étudiants inscrits"
-                    />
-                    <div className="d-flex">
-                        <CardContent>
-                            <Typography variant="h5" style={{ color: "#555" }}>
-                                12
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Link to="/etudiants">
-                                <Button
-                                    className='btn-voir-tout'
-                                    variant="contained"
-                                    size="small"
-                                    style={{ backgroundColor: "#0c50a2", color: "#fff" }}>
-                                    V<span className="span" style={{ textTransform: "lowercase" }}>oir tout</span>
-                                </Button>
-                            </Link>
-                        </CardActions>
-                    </div>
-                </Card>
-            </Grid>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
