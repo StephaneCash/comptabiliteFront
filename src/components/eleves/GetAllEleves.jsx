@@ -1,13 +1,29 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
+import DetailEtudiant from './DetailEtudiant';
 
 function GetAllEleves(props) {
 
     let dataExcel = props.dataExcel;
     let state = props.state;
+    let valMotif = props.valMotif;
+    let valueSearch = props.valueSearch;
+
+    const [showModalDetail, setShowModalDetail] = useState(false);
+
+    const [valueDetail, setValueDetail] = useState({});
+
+    const handleShowModal = (value) => {
+        setValueDetail(value);
+        setShowModalDetail(true);
+    }
+
+    const closeModal = () =>{
+        setShowModalDetail(false);
+    }
 
     useEffect(() => {
         if (state === undefined && state === null) {
-            state='';
+            state = '';
         }
     }, []);
 
@@ -15,7 +31,7 @@ function GetAllEleves(props) {
         <>
             {dataExcel && dataExcel.data ? (
                 dataExcel.data.filter((data) => {
-                    return data.filiere.includes(state ? state.val : "");
+                    return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "") && data.numeroRef.includes(valueSearch ? valueSearch : "")
                 }).map((bank, i) => {
                     return (
                         <tr key={i}>
@@ -27,12 +43,12 @@ function GetAllEleves(props) {
                             <td>
                                 {bank.filiere}
                             </td>
-                            <td>{state ? bank.numeroRef : "********"}</td>
+                            <td>{valueSearch ? bank.numeroRef : "********"}</td>
                             <td>{bank.montant}</td>
                             <td>{bank.motif}</td>
 
                             <td style={{ width: "140px" }}>
-                                <button className='btn btn-success'>
+                                <button className='btn btn-success' onClick={() => handleShowModal(bank)}>
                                     <i className='fa fa-info'></i> Détail
                                 </button>
                             </td>
@@ -47,7 +63,7 @@ function GetAllEleves(props) {
                     </td>
                 </tr>
             }
-
+            <DetailEtudiant showModalDetail={showModalDetail} closeModal={closeModal} valueDetail={valueDetail}/>
         </>
     )
 }

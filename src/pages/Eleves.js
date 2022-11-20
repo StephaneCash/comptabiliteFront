@@ -31,7 +31,7 @@ function Eleves() {
     const handleMotif = (val) => {
         setEtatMotif(!etatMotif);
         setId(val)
-        setValMotif(val.motif);
+        setValMotif(val);
     };
 
     useEffect(() => {
@@ -74,7 +74,7 @@ function Eleves() {
                                                 </button> {' '}
                                             </div>
                                         )
-                                    }) : "Pas de données"
+                                    }) : <i className='text-dark'>"Pas de données"</i>
                             }
                         </div>
                         <div className='d-flex border p-2'>
@@ -84,12 +84,6 @@ function Eleves() {
                                         placeholder='Rechercher par numéro de référence'
                                         onChange={(e) => setValue(e.target.value)} />
                                 </div>
-                            </div>
-                            <div className="col-sm-4">
-                                <NavLink to="addEtudiant">
-                                    <button style={{ float: "right" }} className='btn btn-primary'>
-                                        Ajouter un étudiant</button>
-                                </NavLink>
                             </div>
                         </div>
                         <table className='table table-striped table-bordered'>
@@ -105,7 +99,7 @@ function Eleves() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <GetAllEleves dataExcel={dataExcel} state={state} valueSearch={valueSearch} />
+                                <GetAllEleves dataExcel={dataExcel} state={state} valueSearch={valueSearch} valMotif={valMotif} />
                             </tbody>
                         </table>
                     </div>

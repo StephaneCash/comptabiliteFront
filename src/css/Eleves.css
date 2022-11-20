@@ -1,8 +1,18 @@
-.getAllEleves{
+.getAllEleves {
     padding: 0 5px;
 }
 
-.motifSelected{
+.motifSelected {
     background-color: #fff !important;
     border: 1px solid #31d2f2 !important;
+}
+
+.modal .modal-dialog {
+    max-width: 70%;
+    margin-top: 1rem !important;
+}
+
+#modal td,
+th {
+    border: 1px solid silver !important;
 }
