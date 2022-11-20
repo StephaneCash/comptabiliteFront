@@ -31,8 +31,6 @@ function Eleves() {
         setId(val.id)
     };
 
-   // console.log(id)
-
     useEffect(() => {
         getAllExcelData();
     }, []);
@@ -48,7 +46,7 @@ function Eleves() {
                     <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <div className="alert alert-success">
                             <h6>Liste des étudiants classés par motif de payement <i className="fa fa-graduation-cap"></i></h6>
-                            Nombre des étudiants {dataExcel && dataExcel.data !== undefined ? <>( {dataExcel.data.length} )</> : "Pas de données"}
+                            Nombre des étudiants {dataExcel && dataExcel.data !== undefined ? <>( {state ? state.num : dataExcel.data.length} )</> : "Pas de données"}
                         </div>
                         <div className="alert alert-info grille">
                             {
@@ -68,8 +66,8 @@ function Eleves() {
                         <div className='d-flex border p-2'>
                             <div className="col-sm-8">
                                 <div className='col-sm-5'>
-                                    <input type="search" className="form-control" 
-                                    placeholder='Rechercher par numéro de référence'
+                                    <input type="search" className="form-control"
+                                        placeholder='Rechercher par numéro de référence'
                                         onChange={(e) => setValue(e.target.value)} />
                                 </div>
                             </div>

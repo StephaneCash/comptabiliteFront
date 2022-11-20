@@ -103,7 +103,7 @@ function ApercuContent(props) {
                                                     </Typography>
                                                 </CardContent>
                                                 <CardActions>
-                                                    <Link to={{ pathname: "/etudiants" }} state={{ val: value }}>
+                                                    <Link to={{ pathname: "/etudiants" }} state={{ val: value, num: lengthFiliere[`${value}`] }}>
                                                         <Button
                                                             className='btn-voir-tout'
                                                             variant="contained"
