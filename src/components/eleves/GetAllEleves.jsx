@@ -4,7 +4,7 @@ function GetAllEleves(props) {
 
     let dataExcel = props.dataExcel;
     let state = props.state;
-    
+
     useEffect(() => {
         if (state === undefined && state === null) {
             state='';
@@ -32,8 +32,8 @@ function GetAllEleves(props) {
                             <td>{bank.motif}</td>
 
                             <td style={{ width: "140px" }}>
-                                <button className='btn btn-outline-primary'>
-                                    <i className='fa fa-trash'></i> Supprimer
+                                <button className='btn btn-success'>
+                                    <i className='fa fa-info'></i> Détail
                                 </button>
                             </td>
                         </tr>
