@@ -32,7 +32,7 @@ function Dashborad() {
                 </div>
                 <div className='col-sm-10 p-3'>
                     <ApercuContent data={data} />
-                    <Graphiques />
+                    <Graphiques data={data} />
                 </div>
             </div>
         </>

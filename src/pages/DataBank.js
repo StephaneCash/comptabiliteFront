@@ -63,7 +63,6 @@ function DataBank() {
                                     <th>Numéro Réf</th>
                                     <th>Montant</th>
                                     <th>Motif</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

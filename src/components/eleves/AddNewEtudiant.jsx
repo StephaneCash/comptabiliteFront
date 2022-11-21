@@ -8,13 +8,17 @@ import Navbar from '../Navbar'
 function AddNewEtudiant() {
     const [data, setData] = useState([]);
     let navigate = useNavigate();
+    const [etatBtn, setEtatBtn] = useState(false);
+
     const sauveData = (e) => {
         e.preventDefault();
+        setEtatBtn(true);
         if (data.type !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
             swal({
                 icon: "error",
                 text: 'Format non pris en charge, seul XLS sont autorisés.'
             });
+            setEtatBtn(false);
         } else {
             const formData = new FormData();
             formData.append('file', data)
@@ -23,9 +27,11 @@ function AddNewEtudiant() {
                     if (res.status === 200) {
                         navigate("/bank")
                     }
+                    setEtatBtn(false);
                 })
                 .catch(err => {
-                    console.log(err.response)
+                    console.log(err.response);
+                    setEtatBtn(false);
                 })
         }
     };
@@ -47,7 +53,9 @@ function AddNewEtudiant() {
                             <br />
                             <input type="file" className='form-control' onChange={(e) => setData(e.target.files[0])} />
                             <br />
-                            <button className='btn btn-success' onClick={sauveData}>Sauvegarder</button>
+                            <button className='btn btn-success' onClick={sauveData}>
+                                {etatBtn === true ? <i className="fa fa-spinner fa-pulse"></i> : "Sauvegarder"}
+                            </button>
                             <br />
                         </form>
                         <br />

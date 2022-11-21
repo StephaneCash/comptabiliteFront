@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, Grid, makeStyles } from "@material-ui/core";
-import { Line, Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 import { PeopleRounded } from '@material-ui/icons';
 Chart.register(...registerables);
@@ -32,15 +32,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Graphiques() {
+function Graphiques(props) {
     const classes = useStyles();
 
+    let data = props.data;
+
+    const [dates, setDates] = useState([]);
+    const [arr, setArr] = useState([]);
+    const [number, setNumber] = useState(null);
+console.log(number)
     const data5 = {
-        labels: ['Nov 01', 'Nov 02', 'Nov 03', 'Nov 04', 'Nov 05', 'Nov 06', 'Nov 07', 'Nov 08', 'Nov 09', 'Nov 10', 'Nov 11', 'Nov 12', 'Nov 13', 'Nov 14', 'Nov 15', 'Nov 16', 'Nov 17', 'Nov 18', 'Nov 19', 'Nov 20', 'Nov 21'],
+        labels: dates.map(value => {
+            return value.substring()
+        }),
         datasets: [
             {
                 label: 'Statistics ',
-                data: [10, 16, 4, 6, 17, 11, 18, 11, 12, 9, 5, 26, 13, 7, 8, 12, 3, 12, 14, 14, 14, 11, 9, 7, 5],
+                data: dates.map(value => {
+                    return number[`${value}`]
+                }),
                 fill: false,
                 backgroundColor: '#3a68ad',
                 borderColor: 'black',
@@ -56,6 +66,30 @@ function Graphiques() {
             }
         }
     };
+
+    useEffect(() => {
+        let array = [];
+        if (data) {
+            data && data.data && data.data.map((value) => {
+
+                array.push(value.createdAt.substring(0, 10))
+                let valuesUniques = [...new Set(array)]
+                setDates(valuesUniques);
+                setArr(array);
+            })
+        }
+    }, [data])
+
+    useEffect(() => {
+        let count = {};
+        if (arr) {
+            arr.forEach(element => {
+                count[element] = (count[element] || 0) + 1;
+            })
+        }
+        setNumber(count)
+    }, [arr]);
+
     return (
         <div className='graphiques'>
             <Grid sm={12} xs={12} item={true}>
