@@ -26,6 +26,7 @@ const DetailEtudiant = (props) => {
                                     <th>Sexe</th>
                                     <th>Filière</th>
                                     <th>Motif</th>
+                                    <th>Montant</th>
                                     <th>Numéro de référence</th>
                                     <th>Date de payement</th>
                                 </tr>
@@ -38,6 +39,7 @@ const DetailEtudiant = (props) => {
                                     <td>{valueDetail.sexe}</td>
                                     <td>{valueDetail.filiere}</td>
                                     <td>{valueDetail.motif}</td>
+                                    <td>{valueDetail.montant} CDF</td>
                                     <td>{valueDetail.numeroRef}</td>
                                     <td>{dateParserFunction(valueDetail.createdAt)}</td>
                                 </tr>

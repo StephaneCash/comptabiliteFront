@@ -36,11 +36,10 @@ function Graphiques(props) {
     const classes = useStyles();
 
     let data = props.data;
-
     const [dates, setDates] = useState([]);
     const [arr, setArr] = useState([]);
     const [number, setNumber] = useState(null);
-console.log(number)
+
     const data5 = {
         labels: dates.map(value => {
             return value.substring()
