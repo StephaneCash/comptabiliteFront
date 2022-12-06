@@ -51,7 +51,7 @@ const Leftbar = () => {
     useEffect(() => {
         setRole(data && data.data && data.data.role && data.data.role)
     }, [data]);
-    console.log(role)
+
     return (
         <div className="leftbar">
             <Container className={classes.container} id="conatiner">
