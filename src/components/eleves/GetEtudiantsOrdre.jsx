@@ -7,6 +7,10 @@ function GetEtudiantsOrdre(props) {
     let valMotif = props.valMotif;
     let valueSearch = props.valueSearch;
 
+    const prixEnOrdre = props.prixEnOrdre;
+
+    console.log(dataExcel)
+
     useEffect(() => {
         if (state === undefined && state === null) {
             state = '';
@@ -17,7 +21,8 @@ function GetEtudiantsOrdre(props) {
         <>
             {dataExcel && dataExcel.data ? (
                 dataExcel.data.filter((data) => {
-                    return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "") && data.numeroRef.includes(valueSearch ? valueSearch : "")
+                    return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "")
+                        && data.numeroRef.includes(valueSearch ? valueSearch : "")
                 }).map((bank, i) => {
                     return (
                         <tr key={i}>

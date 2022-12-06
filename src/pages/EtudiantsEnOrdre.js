@@ -21,6 +21,13 @@ function EtudiantsEnOrdre() {
     const location = useLocation();
     const { state } = location;
 
+    const prixEnOrdre = {
+        Frais_Academique: 400000,
+        inscription: 20000,
+        enrolement: 20000,
+        preinscription: 30000
+    }
+
     const getAllExcelData = () => {
         axios.get('http://localhost:5000/api/read')
             .then(res => {
@@ -64,6 +71,15 @@ function EtudiantsEnOrdre() {
                         <div className="alert alert-success">
                             <h6>Liste des étudiants classés par motif de payement en ordre <i className="fa fa-graduation-cap"></i></h6>
                             Nombre des étudiants {dataExcel && dataExcel.data !== undefined ? <>( {state ? state.num : dataExcel.data.length} )</> : "Pas de données"}
+                            <br />
+                            <div className='alert alert-primary'>
+                                {prixEnOrdre && "Frais académiques : " + prixEnOrdre.Frais_Academique + ` CDF ,  `
+                                    + "Enrolement : " + prixEnOrdre.enrolement  +  ` CDF,    `
+                                    + "Inscription : " + prixEnOrdre.inscription + ` CDF,   `
+                                    + "Pré Inscription : " + prixEnOrdre.preinscription + " CDF "
+                                
+                                } 
+                            </div>
                         </div>
                         <div className="alert alert-info grille">
                             {
@@ -109,7 +125,7 @@ function EtudiantsEnOrdre() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <GetEtudiantsOrdre dataExcel={dataExcel} state={state} valueSearch={valueSearch} valMotif={valMotif} />
+                                    <GetEtudiantsOrdre prixEnOrdre={prixEnOrdre} dataExcel={dataExcel} state={state} valueSearch={valueSearch} valMotif={valMotif} />
                                 </tbody>
                             </table>
                         </div>
