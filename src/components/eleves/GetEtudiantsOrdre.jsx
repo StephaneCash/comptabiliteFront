@@ -21,11 +21,16 @@ function GetEtudiantsOrdre(props) {
         <>
             {dataExcel && dataExcel.data ? (
                 dataExcel.data.filter((data) => {
-                    if (valMotif && valMotif.substring(0, 1) === "fr") {
-                        return data.montant == 400000
-                    } else {
-                        return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "")
-                            && data.numeroRef.includes(valueSearch ? valueSearch : "")
+                    if (valMotif && valMotif.substring(0, 2).toLowerCase() === "fr") {
+                        return data.montant && data.montant === '400000'
+                    } else if (valMotif && valMotif.substring(0, 3).toLowerCase() === "ins") {
+                        return data.montant && data.montant === '20000'
+                    } else if (valMotif && valMotif.substring(0, 3).toLowerCase() === "pre") {
+                        return data.montant && data.montant === '30000'
+                    } else if (valMotif && valMotif.substring(0, 3).toLowerCase() === "enr") {
+                        return data.montant && data.montant === '20000'
+                    }else{
+                        return data
                     }
                 }).map((bank, i) => {
                     return (
