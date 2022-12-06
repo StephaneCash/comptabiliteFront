@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import DetailEtudiant from './DetailEtudiant';
+import React, { useEffect } from 'react'
 
 function GetEtudiantsOrdre(props) {
 
@@ -7,19 +6,6 @@ function GetEtudiantsOrdre(props) {
     let state = props.state;
     let valMotif = props.valMotif;
     let valueSearch = props.valueSearch;
-
-    const [showModalDetail, setShowModalDetail] = useState(false);
-
-    const [valueDetail, setValueDetail] = useState({});
-
-    const handleShowModal = (value) => {
-        setValueDetail(value);
-        setShowModalDetail(true);
-    }
-
-    const closeModal = () =>{
-        setShowModalDetail(false);
-    }
 
     useEffect(() => {
         if (state === undefined && state === null) {
@@ -55,7 +41,6 @@ function GetEtudiantsOrdre(props) {
                     </td>
                 </tr>
             }
-            <DetailEtudiant showModalDetail={showModalDetail} closeModal={closeModal} valueDetail={valueDetail}/>
         </>
     )
 }
