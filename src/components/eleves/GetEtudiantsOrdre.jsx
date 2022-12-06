@@ -43,15 +43,7 @@ function GetEtudiantsOrdre(props) {
                             <td>
                                 {bank.filiere}
                             </td>
-                            <td>{valueSearch ? bank.numeroRef : "********"}</td>
-                            <td>{bank.montant}</td>
                             <td>{bank.motif}</td>
-
-                            <td style={{ width: "140px" }}>
-                                <button className='btn btn-success' onClick={() => handleShowModal(bank)}>
-                                    <i className='fa fa-info'></i> Détail
-                                </button>
-                            </td>
                         </tr>
                     )
                 })
