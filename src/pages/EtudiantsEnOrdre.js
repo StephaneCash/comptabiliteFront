@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom';
 import GetEtudiantsOrdre from '../components/eleves/GetEtudiantsOrdre';
 import Leftbar from '../components/Leftbar'
 import Navbar from '../components/Navbar'
 import "../css/Eleves.css"
+import ReactToPrint from "react-to-print";
 
 function EtudiantsEnOrdre() {
     const [dataExcel, setDataExcel] = useState([]);
+
+    const componentPrint = useRef();
 
     const [valueSearch, setValue] = useState('');
     const [etatMotif, setEtatMotif] = useState(false);
@@ -77,34 +80,39 @@ function EtudiantsEnOrdre() {
                                     }) : <i className='text-dark'>"Pas de données"</i>
                             }
                         </div>
-                        <div className='d-flex border p-2'>
-                            <div className="col-sm-8">
-                                <div className='col-sm-5'>
-                                    <input type="search" className="form-control"
-                                        placeholder='Rechercher par numéro de référence'
-                                        onChange={(e) => setValue(e.target.value)} />
-                                </div>
-                            </div>
+                        <div className='border p-2'>
+
+                            <input type="search" style={{ width: "40%" }} className="form-control"
+                                placeholder='Rechercher par numéro de référence'
+                                onChange={(e) => setValue(e.target.value)} />
+                            <ReactToPrint
+                                trigger={
+                                    () =>
+                                        <button className='btn mt-2' style={{ border: "1px solid silver" }}>
+                                            Imprimer <i className='fa fa-print'></i>
+                                        </button>
+                                }
+                                content={() => componentPrint.current}
+                            />
                         </div>
-                        <table className='table table-striped table-bordered'>
-                            <thead>
-                                <tr>
-                                    <th>N°</th>
-                                    <th>Nom</th>
-                                    <th>Postnom</th>
-                                    <th>Prénom</th>
-                                    <th>Sexe</th>
-                                    <th>Filière</th>
-                                    <th>N° Référence</th>
-                                    <th>Montant</th>
-                                    <th>Motif</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <GetEtudiantsOrdre dataExcel={dataExcel} state={state} valueSearch={valueSearch} valMotif={valMotif} />
-                            </tbody>
-                        </table>
+                        <div ref={componentPrint}>
+                            <table className='table table-striped table-bordered'>
+                                <thead>
+                                    <tr>
+                                        <th>N°</th>
+                                        <th>Nom</th>
+                                        <th>Postnom</th>
+                                        <th>Prénom</th>
+                                        <th>Sexe</th>
+                                        <th>Filière</th>
+                                        <th>Motif</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <GetEtudiantsOrdre dataExcel={dataExcel} state={state} valueSearch={valueSearch} valMotif={valMotif} />
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
