@@ -95,6 +95,9 @@ function Eleves() {
                                     <th>Prénom</th>
                                     <th>Sexe</th>
                                     <th>Filière</th>
+                                    <th>N° Référence</th>
+                                    <th>Montant</th>
+                                    <th>Motif</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

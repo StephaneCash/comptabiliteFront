@@ -47,10 +47,6 @@ function Inscription() {
 
         if (pwd !== "" && email !== "" && pseudo !== "") {
             axios.post(url, { email, password: pwd, nom: pseudo }).then(res => {
-                setErr("")
-                if (res.data.jeton) {
-                    localStorage.setItem('user', JSON.stringify(res.data));
-                }
                 navigate('/');
                 swal({
                     icon: "success", text: res.data.message

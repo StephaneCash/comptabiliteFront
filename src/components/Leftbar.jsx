@@ -3,7 +3,9 @@ import {
     Dashboard, People, Announcement
 } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
-import "../css/Leftbar.css"
+import "../css/Leftbar.css";
+import {UidContext} from "../ContextUid";
+import React, {useContext, useState, useEffect} from "react";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -43,6 +45,8 @@ const Leftbar = () => {
 
     const classes = useStyles();
 
+    const {data} = useContext(UidContext);
+
     return (
         <div className="leftbar">
             <Container className={classes.container} id="conatiner">
@@ -67,6 +71,15 @@ const Leftbar = () => {
                         <Announcement className={classes.icon} id="icon" />
                         <Typography className={classes.text}>
                             Data Bank
+                        </Typography>
+                    </NavLink>
+                </div>
+
+                <div className={classes.item}>
+                    <NavLink to="/etudiants-en-ordre" className="d-flex">
+                        <Announcement className={classes.icon} id="icon" />
+                        <Typography className={classes.text}>
+                            Etudiants en ordre
                         </Typography>
                     </NavLink>
                 </div>

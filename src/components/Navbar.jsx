@@ -1,7 +1,8 @@
 import { AppBar, Avatar, Badge, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import { Mail, Notifications, SettingsPower } from "@material-ui/icons";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UidContext } from "../ContextUid";
 
 const useStyles = makeStyles((theme) => ({
     tooBar: {
@@ -37,8 +38,10 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
 
     const classes = useStyles();
-    const auth = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
+
+    const { data } = useContext(UidContext);
+
 
     const handleNotif = () => {
         alert('Service non disoinible, maintenance en cours..., contacter le développeur !!!')
@@ -60,6 +63,7 @@ const Navbar = () => {
                         App
                     </Typography>
                     <div className={classes.icons}>
+                        <div className="me-3">{data && data.data && data.data.nom}</div>
                         <Badge badgeContent={3} overlap="rectangular"
                             onClick={handleNotif}
                             style={{ cursor: "pointer" }}
@@ -72,7 +76,9 @@ const Navbar = () => {
                             color="secondary" className={classes.badge}>
                             <Notifications />
                         </Badge>
-                        <Avatar style={{ backgroundColor: "#555" }} src="s" />
+                        <Avatar style={{ backgroundColor: "#555" }} src="s" >
+                            {data && data.data && data.data.nom.charAt(0).toUpperCase()}
+                        </Avatar>
                         <SettingsPower className={classes.logout} onClick={handleDeconnect} />
                     </div>
                 </Toolbar>
