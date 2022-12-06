@@ -72,6 +72,7 @@ function EtudiantsEnOrdre() {
                             <h6>Liste des étudiants classés par motif de payement en ordre <i className="fa fa-graduation-cap"></i></h6>
                             <br />
                             <div className='alert alert-primary'>
+                                SOLDE : <br />
                                 {prixEnOrdre && "Frais académiques : " + prixEnOrdre.Frais_Academique + ` CDF ,  `
                                     + "Enrolement : " + prixEnOrdre.enrolement + ` CDF,    `
                                     + "Inscription : " + prixEnOrdre.inscription + ` CDF,   `

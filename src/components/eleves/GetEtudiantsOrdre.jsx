@@ -21,8 +21,12 @@ function GetEtudiantsOrdre(props) {
         <>
             {dataExcel && dataExcel.data ? (
                 dataExcel.data.filter((data) => {
-                    return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "")
-                        && data.numeroRef.includes(valueSearch ? valueSearch : "")
+                    if (valMotif && valMotif.substring(0, 1) === "fr") {
+                        return data.montant == 400000
+                    } else {
+                        return data.filiere.includes(state ? state.val : "") && data.motif.includes(valMotif ? valMotif : "")
+                            && data.numeroRef.includes(valueSearch ? valueSearch : "")
+                    }
                 }).map((bank, i) => {
                     return (
                         <tr key={i}>
