@@ -70,15 +70,14 @@ function EtudiantsEnOrdre() {
                     <div className='getAllEleves' style={{ padding: "1rem" }}>
                         <div className="alert alert-success">
                             <h6>Liste des étudiants classés par motif de payement en ordre <i className="fa fa-graduation-cap"></i></h6>
-                            Nombre des étudiants {dataExcel && dataExcel.data !== undefined ? <>( {state ? state.num : dataExcel.data.length} )</> : "Pas de données"}
                             <br />
                             <div className='alert alert-primary'>
                                 {prixEnOrdre && "Frais académiques : " + prixEnOrdre.Frais_Academique + ` CDF ,  `
-                                    + "Enrolement : " + prixEnOrdre.enrolement  +  ` CDF,    `
+                                    + "Enrolement : " + prixEnOrdre.enrolement + ` CDF,    `
                                     + "Inscription : " + prixEnOrdre.inscription + ` CDF,   `
                                     + "Pré Inscription : " + prixEnOrdre.preinscription + " CDF "
-                                
-                                } 
+
+                                }
                             </div>
                         </div>
                         <div className="alert alert-info grille">
