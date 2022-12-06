@@ -59,7 +59,12 @@ function Login() {
                     icon: "success", text: res.data.message
                 })
 
-                navigate('/dashboard');
+                if (res.data.role === "jury") {
+                    navigate('/etudiants-en-ordre');
+                } else if (res.data.role === "comptabilite") {
+                    navigate('/dashboard');
+                }
+
                 setBtnState(false);
             }).catch(erreur => {
                 console.log(erreur)
