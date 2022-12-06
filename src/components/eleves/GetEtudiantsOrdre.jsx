@@ -5,9 +5,6 @@ function GetEtudiantsOrdre(props) {
     let dataExcel = props.dataExcel;
     let state = props.state;
     let valMotif = props.valMotif;
-    let valueSearch = props.valueSearch;
-
-    const prixEnOrdre = props.prixEnOrdre;
 
     console.log(dataExcel)
 
