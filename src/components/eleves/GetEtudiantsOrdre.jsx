@@ -30,7 +30,7 @@ function GetEtudiantsOrdre(props) {
                     } else if (valMotif && valMotif.substring(0, 3).toLowerCase() === "enr") {
                         return data.montant && data.montant === '20000'
                     }else{
-                        return data
+                        return data.montant === "400000" || data.montant === "20000" || data.montant === "30000"
                     }
                 }).map((bank, i) => {
                     return (
