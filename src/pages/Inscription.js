@@ -17,6 +17,7 @@ function Inscription() {
     const [pwd, setPwd] = useState('');
     const [err, setErr] = useState({});
     const [pseudo, setPseudo] = useState('');
+    const [role, setRole] = useState('');
 
     // Is Valids Inputs
     const [isValidEmail, setIsValidEmail] = useState(false);
@@ -45,8 +46,9 @@ function Inscription() {
 
         const url = 'http://localhost:5000/api/users';
 
-        if (pwd !== "" && email !== "" && pseudo !== "") {
-            axios.post(url, { email, password: pwd, nom: pseudo }).then(res => {
+        if (pwd !== "" && email !== "" && pseudo !== "" && role !== "") {
+            axios.post(url, { email, password: pwd, nom: pseudo, role: role }).then(res => {
+                
                 navigate('/');
                 swal({
                     icon: "success", text: res.data.message
@@ -98,6 +100,15 @@ function Inscription() {
                         <input className='form-control mt-1' type="password" style={styleTextField}
                             placeholder="Mot de passe" onChange={handlePwd}
                             required />
+                    </div>
+
+                    <div className="form-group mt-2">
+                        <label>Choisir votre profil</label>
+                        <select className='form-control' onChange={(e) => setRole(e.target.value)}>
+                            <option value="comptabilite">--Choisir un profil--</option>
+                            <option value="comptabilite">Comptabilité</option>
+                            <option value="jury">Jury</option>
+                        </select>
                     </div>
 
                     {err.length > 0 && <span className='text-danger text-center'>{err}.</span>}

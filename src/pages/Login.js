@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Grid, Paper, Typography, Link, Button } from "@material-ui/core"
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import swal from 'sweetalert';
+import { UidContext } from "../ContextUid";
+
 
 function Login() {
     const paperStyle = { padding: 20, height: 'auto', width: 340, margin: '20px auto', backgroundColor: 'white' }
@@ -17,6 +19,9 @@ function Login() {
 
     // Is Valids Inputs
     const [isValidEmail, setIsValidEmail] = useState(false);
+
+    const { data, setData } = useContext(UidContext);
+
 
     const handleEmail = (e) => {
         if (e.target.value === "") {
@@ -45,6 +50,7 @@ function Login() {
         if (pwd !== "" && email !== "") {
             axios.post(url, { email, password: pwd }).then(res => {
                 console.log(res)
+                setData(res.data)
                 setErr("")
                 if (res.data.jeton) {
                     localStorage.setItem('user', JSON.stringify(res.data));

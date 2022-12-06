@@ -1,11 +1,11 @@
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import {
-    Dashboard, People, Announcement
+    Dashboard, People, Announcement, School
 } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 import "../css/Leftbar.css";
-import {UidContext} from "../ContextUid";
-import React, {useContext, useState, useEffect} from "react";
+import { UidContext } from "../ContextUid";
+import React, { useContext, useState, useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -45,44 +45,67 @@ const Leftbar = () => {
 
     const classes = useStyles();
 
-    const {data} = useContext(UidContext);
+    const [role, setRole] = useState(null);
+    const { data } = useContext(UidContext);
 
+    useEffect(() => {
+        setRole(data && data.data && data.data.role && data.data.role)
+    }, [data]);
+    console.log(role)
     return (
         <div className="leftbar">
             <Container className={classes.container} id="conatiner">
-                <div className={classes.item}>
-                    <NavLink to="/dashboard" className="d-flex">
-                        <Dashboard className={classes.icon} id="icon" />
-                        <Typography className={classes.text} >
-                            Dashboard
-                        </Typography>
-                    </NavLink>
-                </div>
-                <div className={classes.item}>
-                    <NavLink to="/etudiants" className="d-flex">
-                        <People className={classes.icon} id="icon" />
-                        <Typography className={classes.text}>
-                            Etudiants
-                        </Typography>
-                    </NavLink>
-                </div>
-                <div className={classes.item}>
-                    <NavLink to="/bank" className="d-flex">
-                        <Announcement className={classes.icon} id="icon" />
-                        <Typography className={classes.text}>
-                            Data Bank
-                        </Typography>
-                    </NavLink>
-                </div>
+                {
 
-                <div className={classes.item}>
-                    <NavLink to="/etudiants-en-ordre" className="d-flex">
-                        <Announcement className={classes.icon} id="icon" />
-                        <Typography className={classes.text}>
-                            Etudiants en ordre
-                        </Typography>
-                    </NavLink>
-                </div>
+                    role && role === "comptabilite" && (
+                        <>
+                            <div className={classes.item}>
+                                <NavLink to="/dashboard" className="d-flex">
+                                    <Dashboard className={classes.icon} id="icon" />
+                                    <Typography className={classes.text} >
+                                        Dashboard
+                                    </Typography>
+                                </NavLink>
+                            </div>
+                            <div className={classes.item}>
+                                <NavLink to="/etudiants" className="d-flex">
+                                    <People className={classes.icon} id="icon" />
+                                    <Typography className={classes.text}>
+                                        Etudiants
+                                    </Typography>
+                                </NavLink>
+                            </div>
+                            <div className={classes.item}>
+                                <NavLink to="/bank" className="d-flex">
+                                    <Announcement className={classes.icon} id="icon" />
+                                    <Typography className={classes.text}>
+                                        Data Bank
+                                    </Typography>
+                                </NavLink>
+                            </div>
+
+                            <div className={classes.item}>
+                                <NavLink to="/etudiants-en-ordre" className="d-flex">
+                                    <School className={classes.icon} id="icon" />
+                                    <Typography className={classes.text}>
+                                        Etudiants en ordre
+                                    </Typography>
+                                </NavLink>
+                            </div>
+                        </>
+                    )}
+
+                {
+                    role && role === "jury" && (
+                        <div className={classes.item}>
+                            <NavLink to="/etudiants-en-ordre" className="d-flex">
+                                <School className={classes.icon} id="icon" />
+                                <Typography className={classes.text}>
+                                    Etudiants en ordre
+                                </Typography>
+                            </NavLink>
+                        </div>
+                    )}
             </Container>
         </div>
     );

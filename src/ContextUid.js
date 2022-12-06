@@ -32,7 +32,7 @@ const ContextUid = () => {
 
     return (
         <div>
-            <UidContext.Provider value={{ data }}>
+            <UidContext.Provider value={{ data, setData }}>
                 <App />
             </UidContext.Provider>
         </div>

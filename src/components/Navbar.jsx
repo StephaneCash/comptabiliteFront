@@ -40,8 +40,7 @@ const Navbar = () => {
     const classes = useStyles();
     const navigate = useNavigate();
 
-    const { data } = useContext(UidContext);
-
+    const { data, setData } = useContext(UidContext);
 
     const handleNotif = () => {
         alert('Service non disoinible, maintenance en cours..., contacter le développeur !!!')
@@ -49,6 +48,7 @@ const Navbar = () => {
 
     const handleDeconnect = () => {
         localStorage.removeItem("user");
+        setData(null)
         navigate("/")
     };
 
