@@ -76,7 +76,6 @@ function EtudiantsEnOrdre() {
                                 {prixEnOrdre && "Frais académiques : " + prixEnOrdre.Frais_Academique + ` CDF ,  `
                                     + "Enrolement : " + prixEnOrdre.enrolement + ` CDF,    `
                                     + "Inscription : " + prixEnOrdre.inscription + ` CDF,   `
-                                    + "Pré Inscription : " + prixEnOrdre.preinscription + " CDF "
 
                                 }
                             </div>
