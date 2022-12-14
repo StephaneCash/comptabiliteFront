@@ -108,6 +108,7 @@ function Inscription() {
                             <option value="comptabilite">--Choisir un profil--</option>
                             <option value="comptabilite">Comptabilité</option>
                             <option value="jury">Jury</option>
+                            <option value="section">Section</option>
                         </select>
                     </div>
 
