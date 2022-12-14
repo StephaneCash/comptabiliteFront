@@ -122,6 +122,7 @@ function EtudiantsEnOrdre() {
                                         <th>Sexe</th>
                                         <th>Filière</th>
                                         <th>Motif</th>
+                                        <th>Montant</th>
                                     </tr>
                                 </thead>
                                 <tbody>
