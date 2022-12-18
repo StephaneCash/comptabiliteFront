@@ -63,6 +63,8 @@ function Login() {
                     navigate('/etudiants-en-ordre');
                 } else if (res.data.role === "comptabilite") {
                     navigate('/dashboard');
+                } else if (res.data.role === "section") {
+                    navigate('/etudiants-en-ordre');
                 }
 
                 setBtnState(false);
