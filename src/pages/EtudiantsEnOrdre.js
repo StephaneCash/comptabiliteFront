@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import { useLocation } from 'react-router-dom';
 import GetEtudiantsOrdre from '../components/eleves/GetEtudiantsOrdre';
 import Leftbar from '../components/Leftbar'
 import Navbar from '../components/Navbar'
 import "../css/Eleves.css"
 import ReactToPrint from "react-to-print";
+import { UidContext } from "../ContextUid";
+
 
 function EtudiantsEnOrdre() {
     const [dataExcel, setDataExcel] = useState([]);
@@ -122,6 +124,7 @@ function EtudiantsEnOrdre() {
                                         <th>Filière</th>
                                         <th>Motif</th>
                                         <th>Montant</th>
+                                        <th>Numéro référence</th>
                                     </tr>
                                 </thead>
                                 <tbody>

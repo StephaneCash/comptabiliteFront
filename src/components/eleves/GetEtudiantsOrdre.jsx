@@ -5,6 +5,7 @@ function GetEtudiantsOrdre(props) {
     let dataExcel = props.dataExcel;
     let state = props.state;
     let valMotif = props.valMotif;
+    let valueSearch = props.valueSearch;
 
     console.log(dataExcel)
 
@@ -26,7 +27,10 @@ function GetEtudiantsOrdre(props) {
                         return data.montant && data.montant === '30000'
                     } else if (valMotif && valMotif.substring(0, 3).toLowerCase() === "enr") {
                         return data.montant && data.montant === '20000'
-                    } else {
+                    } else if (valueSearch) {
+                        return data.numeroRef && data.numeroRef.includes(valueSearch)
+                    }
+                    else {
                         return data.montant === "400000" || data.montant === "20000" || data.montant === "30000"
                     }
                 }).map((bank, i) => {
@@ -42,6 +46,7 @@ function GetEtudiantsOrdre(props) {
                             </td>
                             <td>{bank.motif}</td>
                             <td>{bank.montant} CDF</td>
+                            <td>{valueSearch ? bank.numeroRef : "**********"}</td>
                         </tr>
                     )
                 })
