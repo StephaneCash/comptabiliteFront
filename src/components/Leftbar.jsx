@@ -106,6 +106,17 @@ const Leftbar = () => {
                             </NavLink>
                         </div>
                     )}
+                {
+                    role && role === "section" && (
+                        <div className={classes.item}>
+                            <NavLink to="/etudiants-en-ordre" className="d-flex">
+                                <School className={classes.icon} id="icon" />
+                                <Typography className={classes.text}>
+                                    Etudiants en ordre
+                                </Typography>
+                            </NavLink>
+                        </div>
+                    )}
             </Container>
         </div>
     );
